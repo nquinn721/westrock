@@ -3,7 +3,7 @@ var express = require('express'),
 	pug = require('pug'),
 	nib = require('nib'),
 	join = require('path').join,
-	publicDir = join(__dirname, 'public'),
+	publicDir = join(__dirname, 'dist'),
 	bowerDir = join(__dirname, 'bower_components');
  
 

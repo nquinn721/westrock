@@ -2,8 +2,8 @@ class Favorites{
 	constructor(movies){
 		this.movies = movies;
 		this.currentFilter = {
-			filterName: 'Now Playing',
-			filter: 'now_playing'
+			filterName: 'All',
+			filter: 'all'
 		}
 
 		this.movies.showOnlyFavorites();
