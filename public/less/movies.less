@@ -1,0 +1,51 @@
+.movies{
+	margin-left: 10px;
+	width: 80%;
+	.fa-heart, .remove{
+		color:@green;
+		font-size: 12px;
+		cursor: pointer;
+	}
+	&.favorites{
+		.left{
+			margin-right: 10px;
+			img{
+				width: 200px;
+				height: 100%;
+			}
+		}
+		.title{
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+	.movie{
+		padding: 5px 15px 15px 5px;
+		border-top: 1.5px solid #c9c9c9;
+		display: flex;
+		.left.main {
+		    margin-right: 10px;
+			img {
+			    width: 75px;
+			    height: 100%;
+			}
+		}
+		&.favorited{
+			border-top: 1.5px solid @green;
+		}
+
+		.votes i{
+			color: @yellow;
+			font-size: 12px;
+			margin-right: 5px;
+		}
+		.details{
+			margin-top: 10px;
+			.release{
+				color: #aaa;
+				font-size: 10px;
+				margin-top:5px;
+			}
+		}
+	}
+}
