@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+html(lang="en", ng-app="app")
+head
+	meta(charset="UTF-8")
+	title Westrock
+	link(rel="stylesheet", href="font-awesome/web-fonts-with-css/css/fontawesome-all.min.css")
+	link(rel="stylesheet", href="css/main.css")
+body
+.header(ng-controller="header as header")
+	.title 
+		span: b Movie
+		span Flix
+	.nav
+		a(ng-show="header.activeRoute === 'home'", ng-click="header.activeRoute = 'favorites'" ng-href="#!/favorites") View Favorited
+		a(ng-show="header.activeRoute === 'favorites'", ng-click="header.activeRoute = 'home'" ng-href="/") Back to Home
+div.content(ng-view)
+script(src="angular/angular.min.js")
+script(src="angular-route/angular-route.min.js")
+script(src="js/main.js")
+script(src="js/routes.js")
+script(src="js/controllers/favorites.js")
+script(src="js/controllers/header.js")
+script(src="js/controllers/home.js")
+script(src="js/factories/movies.js")
+	

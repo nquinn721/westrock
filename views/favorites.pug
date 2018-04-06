@@ -1,0 +1,31 @@
+.favorites
+	h3 YOUR FAVORITED MOVIE LIST
+	b.small-text Filter by
+	.main
+		.filters
+			.filter(ng-click="favorites.showFilters = !favorites.showFilters")
+				div  {{favorites.currentFilter.filterName}}
+				div: i.fas.fa-angle-down
+			.more-filters(ng-show="favorites.showFilters")
+				div(ng-click="favorites.filterFavs('now_playing', 'Now Playing')")  Now Playing
+				div(ng-click="favorites.filterFavs('popular', 'Popular')")  Popular
+				div(ng-click="favorites.filterFavs('top_rated', 'Top Rated')")  Top Rated
+				div(ng-click="favorites.filterFavs('upcoming', 'Upcoming')")  Upcoming
+				
+
+		.movies.favorites
+			.movie.favorited(ng-repeat="movie in favorites.movies.favorites", ng-if="movie.filter === favorites.currentFilter.filter")
+				.left
+					img(src="https://image.tmdb.org/t/p/w500{{movie.backdrop_path}}")
+				.right
+					.title
+						div
+							| {{movie.title}} &nbsp;&nbsp;
+							span.remove(ng-click="favorites.movies.removeFavorite(movie, favorites.currentFilter)") remove
+						.votes
+							i.fa-star.fas(ng-repeat="(key, num) in movie.starsFilled track by key")
+							i.fa-star.far(ng-repeat="(key, num) in movie.starsNotFilled track by key")
+					.details
+						.overview {{movie.overview.split(' ').slice(0, 20).join(' ')}}...
+						.release release {{movie.release_date}}
+

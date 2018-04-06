@@ -1,0 +1,29 @@
+.home
+	h3 Home
+	.main
+		.filters
+			.filter(ng-click="home.showFilters = !home.showFilters")
+				div  {{home.currentFilter.filterName}}
+				div: i.fas.fa-angle-down
+			.more-filters(ng-show="home.showFilters")
+				div(ng-click="home.getMovies('now_playing', 'Now Playing')")  Now Playing
+				div(ng-click="home.getMovies('popular', 'Popular')")  Popular
+				div(ng-click="home.getMovies('top_rated', 'Top Rated')")  Top Rated
+				div(ng-click="home.getMovies('upcoming', 'Upcoming')")  Upcoming
+				
+
+		.movies
+			.movie(ng-repeat="movie in home.movies.list", class="{{movie.favorited && 'favorited'}}")
+				.left.main
+					img(src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}")
+				.right
+					.title 
+						| {{movie.title}} &nbsp;&nbsp;
+						i.fa-heart(class="{{movie.favorited ? 'fas' : 'far'}}", ng-click="home.movies.checkSaveFavorite(movie, home.currentFilter.filter)")
+					.votes
+						i.fa-star.fas(ng-repeat="(key, num) in movie.starsFilled track by key")
+						i.fa-star.far(ng-repeat="(key, num) in movie.starsNotFilled track by key")
+					.details
+						.overview {{movie.overview.split(' ').slice(0, 20).join(' ')}}...
+						.release release {{movie.release_date}}
+
